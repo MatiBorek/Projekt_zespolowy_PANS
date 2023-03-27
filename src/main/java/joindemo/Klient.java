@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Teacher {
+public class Klient {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -17,16 +17,16 @@ public class Teacher {
     private String name;
     
     @OneToMany(mappedBy = "teacher") 
-    private Set<Course> courses;
+    private Set<Operacja> courses;
 
-    protected Teacher() {
+    protected Klient() {
         //courses = new HashSet<Course>();
     }
 
     
-    public Teacher(String name) {
+    public Klient(String name) {
         this.name = name;
-        courses = new HashSet<Course>();
+        courses = new HashSet<Operacja>();
     }
 
     
@@ -52,16 +52,16 @@ public class Teacher {
         this.name = name;
     }
 
-    public Set<Course> getCourses() {
+    public Set<Operacja> getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<Course> courses) {
+    public void setCourses(Set<Operacja> courses) {
         this.courses = courses;
     }
     
     public void clearCourses() {
-        courses = new HashSet<Course>();
+        courses = new HashSet<Operacja>();
     }
     
 

@@ -3,13 +3,13 @@ package joindemo;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StudentRepository extends JpaRepository<Student, Long> {
+public interface GraRepository extends JpaRepository<Gra, Long> {
 
-    List<Student> findByCoursesSubject(String subject);
+    List<Gra> findByCoursesSubject(String subject);
     
-    List<Student> findByAgeLessThanAndCoursesSubject(int age,String subject);
+    List<Gra> findByAgeLessThanAndCoursesSubject(int age, String subject);
     
-    List<Student> findDistinctByCoursesTeacherName(String name);
+    List<Gra> findDistinctByCoursesTeacherName(String name);
     
     //LISTA OPERATOROW DO TWORZENIA ZAPYTAN
 /*

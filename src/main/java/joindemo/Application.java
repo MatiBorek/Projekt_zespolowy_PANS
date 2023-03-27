@@ -16,13 +16,13 @@ public class Application implements CommandLineRunner {
     }
     
     @Autowired
-    private TeacherRepository teacherRepository;
+    private KlientRepository teacherRepository;
     
     @Autowired
-    private CourseRepository courseRepository;
+    private OperacjaRepository courseRepository;
     
     @Autowired
-    private StudentRepository studentRepository;
+    private GraRepository studentRepository;
 
     @Override
     public void run(String... args) {
@@ -49,23 +49,23 @@ public class Application implements CommandLineRunner {
         
         
         //Nauczyciele
-        Teacher t1 = new Teacher("Malinowski");
-        Teacher t2 = new Teacher("Palka");
-        Teacher t3 = new Teacher("Nowakowski");
+        Klient t1 = new Klient("Malinowski");
+        Klient t2 = new Klient("Palka");
+        Klient t3 = new Klient("Nowakowski");
                 
         //Kursy
-        Course c1 = new Course("Bazy danych",10);
-        Course c2 = new Course("Programowanie w jezyku C",15);
-        Course c3 = new Course("Hurtownie danych",20);
-        Course c4 = new Course("Algorytmika",25);
+        Operacja c1 = new Operacja("Bazy danych",10);
+        Operacja c2 = new Operacja("Programowanie w jezyku C",15);
+        Operacja c3 = new Operacja("Hurtownie danych",20);
+        Operacja c4 = new Operacja("Algorytmika",25);
         
         //Studenci
-        Student s1 = new Student("Rumski",20);
-        Student s2 = new Student("Franke",19);
-        Student s3 = new Student("Malina",21);
-        Student s4 = new Student("Ruszel",20);
-        Student s5 = new Student("Abakowski",21);
-        Student s6 = new Student("Portas",21);
+        Gra s1 = new Gra("Rumski",20);
+        Gra s2 = new Gra("Franke",19);
+        Gra s3 = new Gra("Malina",21);
+        Gra s4 = new Gra("Ruszel",20);
+        Gra s5 = new Gra("Abakowski",21);
+        Gra s6 = new Gra("Portas",21);
         
         //===============================================
         //Wstepne wstawienie jeszcze bez powiazan
@@ -155,21 +155,21 @@ public class Application implements CommandLineRunner {
         //===============================================
                                 
         System.out.println("Nauczyciele...");
-        for (Teacher teacher : teacherRepository.findAll()) 
+        for (Klient teacher : teacherRepository.findAll())
         {
             System.out.println(teacher.toString());	
 	}
         System.out.println("=====================================");
         
         System.out.println("Kursy...");
-        for (Course course : courseRepository.findAll()) 
+        for (Operacja course : courseRepository.findAll())
         {
             System.out.println(course.toString());	
 	}
         System.out.println("=====================================");
         
         System.out.println("Studenci...");
-        for (Student student : studentRepository.findAll()) 
+        for (Gra student : studentRepository.findAll())
         {
             System.out.println(student.toString());	
 	}
@@ -179,7 +179,7 @@ public class Application implements CommandLineRunner {
         
         System.out.println("Kursy konkretnego nauczyciela...");
         String t = "Palka";
-        for (Course course : courseRepository.findByTeacherName(t)) 
+        for (Operacja course : courseRepository.findByTeacherName(t))
         {
             System.out.println(course.toString()+" prowadzi:"+t);	
 	}
@@ -187,7 +187,7 @@ public class Application implements CommandLineRunner {
         
         System.out.println("Kursy na ktore chodzi konretny student...");
         String s = "Portas";
-        for (Course course : courseRepository.findByStudentsName(s)) 
+        for (Operacja course : courseRepository.findByStudentsName(s))
         {
             System.out.println(course.toString()+" uczeszcza:"+s);	
 	}
@@ -196,7 +196,7 @@ public class Application implements CommandLineRunner {
         
         System.out.println("Studenci chodzacy na przedmiot...");
         String c = "Algorytmika";
-        for (Student student : studentRepository.findByCoursesSubject(c)) 
+        for (Gra student : studentRepository.findByCoursesSubject(c))
         {
             System.out.println(student.toString()+" uczeszcza na:"+c);	
 	}
@@ -204,7 +204,7 @@ public class Application implements CommandLineRunner {
         
         System.out.println("Studenci konkretnego nauczyciela...");
         t = "Palka";
-        for (Student student : studentRepository.findDistinctByCoursesTeacherName(t)) 
+        for (Gra student : studentRepository.findDistinctByCoursesTeacherName(t))
         {
             System.out.println(student.toString()+" ma nauczyciela:"+t);	
 	}
@@ -214,7 +214,7 @@ public class Application implements CommandLineRunner {
         System.out.println("Studenci chodzacy na ustalony przedmiot mlodsi od ustalonego wieku...");
         c = "Algorytmika";
         int a = 21;
-        for (Student student : studentRepository.findByAgeLessThanAndCoursesSubject(a,c)) 
+        for (Gra student : studentRepository.findByAgeLessThanAndCoursesSubject(a,c))
         {
             System.out.println(student.toString()+" uczeszcza na kurs:"+c+" i jest mlodszy od "+a);	
 	}
@@ -223,7 +223,7 @@ public class Application implements CommandLineRunner {
         
         System.out.println("Nauczyciele prowadzacy konkretny kurs...");
         c = "Algorytmika";
-        for (Teacher teacher: teacherRepository.findByCoursesSubject(c)) 
+        for (Klient teacher: teacherRepository.findByCoursesSubject(c))
         {
             System.out.println(teacher.toString()+" prowadzi kurs:"+c);	
 	}
@@ -234,23 +234,23 @@ public class Application implements CommandLineRunner {
         //Demonstracja usuwania nauczyciela
         
         String locTeacher = "Nowakowski";        
-        List<Course> courseList = courseRepository.findByTeacherName(locTeacher);
+        List<Operacja> courseList = courseRepository.findByTeacherName(locTeacher);
         for (int i=0; i<courseList.size(); i++)
         {
-            Course course = courseList.get(i);
+            Operacja course = courseList.get(i);
             course.setTeacher(null);
             courseRepository.save(course);
         }
         
-        List<Teacher> teacherList = teacherRepository.findByName(locTeacher);                       
-        Teacher tt = teacherList.get(0);
+        List<Klient> teacherList = teacherRepository.findByName(locTeacher);
+        Klient tt = teacherList.get(0);
         tt.clearCourses();
         teacherRepository.save(tt);
         teacherRepository.delete(tt);
                 
         
         System.out.println("Nauczyciele po usunięciu...");
-        for (Teacher teacher : teacherRepository.findAll()) 
+        for (Klient teacher : teacherRepository.findAll())
         {
             System.out.println(teacher.toString());	
 	}

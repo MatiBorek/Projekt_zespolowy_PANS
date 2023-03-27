@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Student {
+public class Gra {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -19,18 +19,18 @@ public class Student {
     private int age;
         
     @ManyToMany 
-    private Set<Course> courses;
+    private Set<Operacja> courses;
 
-    protected Student() 
+    protected Gra()
     {
         //courses = new HashSet<Course>();
     }
 
     
-    public Student(String name, int age) {
+    public Gra(String name, int age) {
         this.name = name;
         this.age = age;     
-        courses = new HashSet<Course>();
+        courses = new HashSet<Operacja>();
     }
 
     
@@ -65,11 +65,11 @@ public class Student {
         this.age = age;
     }
 
-    public Set<Course> getCourses() {
+    public Set<Operacja> getCourses() {
         return courses;
     }
 
-    public void setCourses(Set<Course> courses) {
+    public void setCourses(Set<Operacja> courses) {
         this.courses = courses;
     }
 

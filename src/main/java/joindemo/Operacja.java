@@ -10,7 +10,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Course {
+public class Operacja {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -20,24 +20,24 @@ public class Course {
     private int hours;
     
     @ManyToOne 
-    private Teacher teacher;
+    private Klient teacher;
     
     @ManyToMany 
-    private Set<Student> students;
+    private Set<Gra> students;
     
     
-    protected Course() 
+    protected Operacja()
     {
         //teacher = null;
         //students = new HashSet<Student>();
     }
 
     
-    public Course(String subject, int hours) {
+    public Operacja(String subject, int hours) {
         teacher = null;
         this.subject = subject;
         this.hours = hours;        
-        students = new HashSet<Student>();
+        students = new HashSet<Gra>();
     }
 
 
@@ -73,19 +73,19 @@ public class Course {
         this.hours = hours;
     }
 
-    public Teacher getTeacher() {
+    public Klient getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(Teacher teacher) {
+    public void setTeacher(Klient teacher) {
         this.teacher = teacher;
     }
 
-    public Set<Student> getStudents() {
+    public Set<Gra> getStudents() {
         return students;
     }
 
-    public void setStudents(Set<Student> students) {
+    public void setStudents(Set<Gra> students) {
         this.students = students;
     }
     

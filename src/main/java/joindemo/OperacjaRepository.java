@@ -4,11 +4,11 @@ package joindemo;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CourseRepository extends JpaRepository<Course, Integer> {
+public interface OperacjaRepository extends JpaRepository<Operacja, Integer> {
 
-    List<Course> findByTeacherName(String name);
+    List<Operacja> findByTeacherName(String name);
     
-    List<Course> findByStudentsName(String name);
+    List<Operacja> findByStudentsName(String name);
     
 
 //LISTA OPERATOROW DO TWORZENIA ZAPYTAN
