@@ -1,16 +1,14 @@
-package joindemo;
+package joindemo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "client")
 public class Client {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_seq")
+    private Long id;
     private String fname;
     private String lname;
     private String road;
@@ -35,11 +33,11 @@ public class Client {
     @Override
     public String toString() {
         return String.format(
-                "Client[id=%d, name='%s']",id, fname);
+                "[%d.%s]",id, fname);
     }
 
-    public int getId() {        return id;    }
-    public void setId(int id) {        this.id = id;    }
+    public Long getId() {        return id;    }
+    public void setId(Long id) {        this.id = id;    }
 
     public String getFname() {        return fname;    }
     public void setFname(String fname) {        this.fname = fname;    }
