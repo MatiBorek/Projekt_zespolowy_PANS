@@ -1,4 +1,4 @@
-package joindemo.entity;
+package Database.entity;
 
 import javax.persistence.*;
 

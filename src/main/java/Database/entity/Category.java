@@ -1,20 +1,20 @@
-package joindemo.entity;
+package Database.entity;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name ="product")
-public class Product {
+@Table(name ="category")
+public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "category_seq")
     private Long id;
     private String name;
 
-    protected Product() {    }
+    protected Category() {    }
 
 
-    public Product(String name) {
+    public Category(String name) {
         this.name = name;
     }
 

@@ -1,6 +1,6 @@
-package joindemo.repository;
+package Database.repository;
 
-import joindemo.entity.Client;
+import Database.entity.Producent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -10,14 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Long> {
+public interface ProducentRepository extends JpaRepository<Producent, Long> {
 
-    List<Client> findByFname(String name);
+    List<Producent> findByName(String name);
 
     @Transactional
     @Modifying
-    @Query("update Client c set c.fname = ?1 where c.id = ?2")
-    void updateClientName(String fname, Long id);
+    @Query("update Producent p set p.name = ?1 where p.id = ?2")
+    void updateProducentName(String name, Long id);
 
 
 

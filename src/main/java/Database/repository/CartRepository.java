@@ -1,6 +1,6 @@
-package joindemo.repository;
+package Database.repository;
 
-import joindemo.entity.Category;
+import Database.entity.Cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -10,14 +10,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface CategoryRepository extends JpaRepository<Category, Long> {
+public interface CartRepository extends JpaRepository<Cart, Long> {
 
-    List<Category> findByName(String name);
+    List<Cart> findByName(String name);
 
     @Transactional
     @Modifying
-    @Query("update Category c set c.name = ?1 where c.id = ?2")
-    void updateCategoryName(String name, Long id);
+    @Query("update Cart c set c.name = ?1 where c.id = ?2")
+    void updateCartName(String name, Long id);
 
 
 

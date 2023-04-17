@@ -1,7 +1,7 @@
-package joindemo.loaddata;
+package Database.loaddata;
 
-import joindemo.entity.*;
-import joindemo.repository.*;
+import Database.entity.*;
+import Database.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
